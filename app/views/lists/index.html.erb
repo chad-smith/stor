@@ -1,0 +1,20 @@
+<h1>Lists</h1>
+<table>
+	<tr>
+		<th>Actions</th>
+		<th>Name</th>
+	</tr>
+	<% for list in @lists %>
+	<tr>
+		<td>
+			<%= link_to "View", list %>
+			<%= link_to "Edit", edit_list_url(list) %>
+		</td>
+		<td><%= list.name %></td>
+	</tr>
+	<% end %>
+</table>
+<p>
+	<%= link_to image_tag("addbtn.png", :border=>0), :action => 'new' -%>
+	<!-- <span>Add</span> -->
+</p>

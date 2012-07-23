@@ -1,0 +1,13 @@
+<ul class="menu main-menu">
+  <% if !lists.blank? %>
+    <% for list in lists %>
+      <li>
+        <%= link_to_if params[:listid] == list.slug, list.name, list_path(list.slug), {:class => 'active'} do
+          link_to list.name, list_path(list.slug)
+        end -%>
+      </li>
+    <% end %>
+  <% end %>
+</ul>
+
+  <!-- <li><a class="active" href="/lists/students">Students</a></li> -->

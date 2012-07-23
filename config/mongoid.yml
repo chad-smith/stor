@@ -1,0 +1,12 @@
+production:
+  host: localhost
+  database: stor
+
+test:
+  host: localhost
+  database: stor_test
+  logger: false
+
+development:
+  host: localhost
+  database: stor_dev

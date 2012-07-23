@@ -1,0 +1,35 @@
+<h1>New Item</h1>
+<%= form_for @item, :url => { :action => "create" } do |f| %>  
+  <% if @item.errors.any? %>  
+    <div id="errorExplanation">  
+      <h2><%= pluralize(@item.errors.count, "error") %> prohibited this record from being saved:</h2>  
+      <ul>  
+        <% @item.errors.each do |attr, msg| %>  
+          <li><%= "#{@item.get_field_name(attr)} #{msg}" %></li>  
+        <% end %>  
+      </ul>  
+    </div>  
+  <% end %>  
+  <% for field in @list.schema_fields -%>
+  <p>
+    <%= f.label field.name.to_sym, "#{field.name}" %>
+    <% case field.data_type %>
+      <% when 'String' %>
+      <%= f.text_field "Field#{field.id}".to_sym %>
+      <% when 'Boolean' %>
+      <%= f.check_box "Field#{field.id}".to_sym %>
+      <% when 'Integer' %>
+      <%= f.number_field "Field#{field.id}".to_sym %>
+      <% when 'Float' %>
+      <%= f.number_field "Field#{field.id}".to_sym %>
+      <% when 'DateTime' %>
+      <%= f.datetime_select "Field#{field.id}".to_sym %>
+      <% when 'Date' %>
+      <%= f.date_select "Field#{field.id}".to_sym %>
+      <% when 'Time' %>
+      <%= f.time_select "Field#{field.id}".to_sym %>
+    <% end -%>
+  </p>
+  <% end%>
+  <%= f.submit "Create" %>
+<% end %>

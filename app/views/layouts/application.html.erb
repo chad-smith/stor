@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>stor</title>
+    <%= stylesheet_link_tag "application" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <div class="header">
+      <div class="page-title">stor</div>
+    </div>
+    <div class="main-menu-container">
+      <%= render_menu %>
+      <div style="float:right;margin-top:-15px;margin-right:8px;"><%= link_to image_tag('settings.png', :border=>0), :controller=>:lists %></div>
+      <div class="clear"></div>
+    </div>
+    <div class="body-content-wrapper">
+      <ul class="menu submenu">
+        <li class="first">Ungrouped</li>
+        <li><a href="#">Group 1</a></li>
+        <li><a href="#">Group 2</a></li>
+      </ul>
+      <div class="clear"></div>
+      <% if flash[:notice] %>
+        <p class="flash flash-notice"><%= flash[:notice] %></p>
+      <% end %>
+      <% if flash[:error] %>
+        <p class="flash flash-error"><%= flash[:error] %></p>
+      <% end %>
+      <div class="body-content">
+        <div class="body-content-inner">
+          <%= yield %>
+        </div>
+      </div>
+      <div class="side-menu">
+        <h3>Menu</h3>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu pretium nibh. Nullam vestibulum congue ornare. Sed ultrices magna eu ipsum ornare id aliquam sapien accumsan. Nullam sem nibh, tempus ut volutpat elementum, pulvinar eu ante. Proin vitae tempor augue. Nullam mollis lacinia porta. Mauris ligula tellus, gravida non elementum in, egestas id neque. Proin auctor porttitor lorem at mollis. Fusce enim erat, suscipit eget egestas ut, imperdiet non augue. Sed nibh neque, vulputate at adipiscing a, aliquam porta tellus. Vestibulum nisl nisi, pharetra a imperdiet nec, consequat vitae eros. Vestibulum vestibulum gravida massa, nec pretium tortor ullamcorper sed.
+          </p>   
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="footer">footer</div>
+  </body>
+</html>

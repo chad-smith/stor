@@ -1,0 +1,279 @@
+$dark-primary: #5D1E45;
+$light-primary: #954D7B;
+$dark-secondary: #902D20;
+$light-secondary: #C3938D;
+$dark-contrast: #506A3D;
+$light-contrast: #769020;
+$dark-gray:rgb(60, 60, 60);
+$medium-gray:rgb(217, 217, 217);
+$light-gray:rgb(242, 242, 242);
+
+@mixin gradient ($top, $bottom)
+{
+  background-image: linear-gradient(bottom, $bottom 0%, $top 100%);
+  background-image: -o-linear-gradient(bottom, $bottom 0%, $top 100%);
+  background-image: -moz-linear-gradient(bottom, $bottom 0%, $top 100%);
+  background-image: -webkit-linear-gradient(bottom, $bottom 0%, $top 100%);
+  background-image: -ms-linear-gradient(bottom, $bottom 0%, $top 100%);
+
+  background-image: -webkit-gradient(
+    linear,
+      left bottom,
+        left top,
+          color-stop(0, $bottom),
+            color-stop(1, $top)
+            );
+}
+
+@import url(http://fonts.googleapis.com/css?family=Andika|Quicksand|Terminal+Dosis);
+
+@font-face {font-family: 'Anivers-Regular';src: font-url('200F43_0_0.eot');src: font-url('200F43_0_0.eot?#iefix') format('embedded-opentype'),font-url('200F43_0_0.woff') format('woff'),font-url('200F43_0_0.ttf') format('truetype');}
+ 
+  
+@font-face {font-family: 'MuseoSlab-500';src: font-url('200F43_1_0.eot');src: font-url('200F43_1_0.eot?#iefix') format('embedded-opentype'),font-url('200F43_1_0.woff') format('woff'),font-url('200F43_1_0.ttf') format('truetype');}
+  
+/*
+@font-face {font-family: 'CallunaSans-Regular';src: font-url('200F43_2_0.eot');src: font-url('200F43_2_0.eot?#iefix') format('embedded-opentype'),font-url('200F43_2_0.woff') format('woff'),font-url('webfonts/200F43_2_0.ttf') format('truetype');}
+*/
+
+input, select, textarea, button { font-family:sans-serif; font-size: 0.9em; }
+
+.flash
+{
+  padding:5px;
+  padding-top:8px;
+  background:#efefef;  
+}
+
+.flash-notice
+{
+  border:solid 1px green;
+  color:green;
+}
+
+.flash-error
+{
+  border:solid 1px red;
+  color:red;
+}
+
+* {
+  font-family:"Anivers-Regular" ,Arial, sans-serif;
+  color:$dark-gray;
+}
+
+body 
+{
+  margin:0px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color:$dark-primary;
+  font-family:'MuseoSlab-500';
+  margin:0;
+}
+
+.page-title { 
+  font-size:30pt;
+  color:$dark-primary;
+  font-family:'MuseoSlab-500';
+}
+
+h3, h4
+{
+  border-bottom:solid 2px $medium-gray;
+}
+
+h3, h5 {
+  color:$dark-secondary;
+}
+
+h5, h6, h6, h6, h6, h6, h6 {
+  text-transform:uppercase;
+}
+
+strong {
+  color:black;
+}
+
+em {
+  color:$dark-secondary;
+}
+
+blockquote{
+  border: solid 1px $dark-secondary;
+  margin-top:5px;
+  margin-bottom:5px;
+  padding:5px;
+  @include gradient(white, $light-secondary);
+}
+
+hr {
+  border-color: $dark-secondary;
+  border-style:dashed;
+}
+
+code{
+  display:block;
+  margin:5px;
+  padding:5px;
+  border:solid 2px $dark-gray; 
+  border-left:solid 8px $dark-gray;
+}
+
+a, a:link, a:visited {
+  color:$dark-contrast;
+  //text-decoration:none;
+}
+
+a:hover {
+  color:$light-contrast;  
+}
+
+li a
+{
+  outline:none;
+}
+
+th
+{
+  color:$dark-primary;
+  border-bottom:solid 2px $light-primary;
+}
+
+.header
+{
+  @include gradient(#DDDDDD, #FFFFFE);
+  padding-left:10px;
+  padding-top:10px;
+}
+
+.footer
+{
+  @include gradient($light-gray, $medium-gray);
+  padding:5px;
+  padding-left:10px;
+  border-top:solid 2px $light-primary;
+  position:fixed;
+  width:100%;
+  bottom:0;
+}
+
+div.body-content
+{
+  float:left;
+  margin-left:-280px;
+  width:100%;
+  min-width:660px;
+}
+
+div.body-content-inner {
+  padding-left:280px;
+}
+
+div.side-menu {
+  width:250px;
+  background:rgb(242,242,242);
+  float:right;
+  padding:10px;
+  border-left:solid 2px rgb(217, 217, 217);  
+}
+
+div.main-menu-container {
+  border-bottom:solid 2px $dark-primary;
+}
+
+div.body-content-wrapper {
+  padding:10px;
+  border-top: 2px solid $light-primary;
+  margin-bottom:45px;
+}
+
+ul.menu {
+  list-style:none;
+  margin:0px;
+  padding:0px;
+}
+
+ul.main-menu {
+  margin-left:10px;
+}
+
+ul.main-menu li {
+  margin-left:2px;
+}
+
+ul.menu li {
+  float:left;
+}
+
+ul.menu li a{
+  display:block;
+}
+
+ul.main-menu li a {
+  height:15px;
+  padding:5px;
+  padding-left:15px;
+  padding-right:15px;
+  color:#333333;
+  border-left:1px solid $light-primary;
+  border-top:1px solid $light-primary;
+  border-right:1px solid $light-primary;
+  border-top-left-radius:5px;
+  border-top-right-radius:5px;
+  cursor:pointer;
+  @include gradient(rgb(242,242,242), rgb(217,217,217));
+  text-decoration:none;
+
+}
+
+ul.main-menu li a.active, ul.main-menu li a.active:hover
+{
+  border-color:$dark-primary;
+  color:white;
+  text-shadow:2px 2px 2px #000000;
+  @include gradient($light-primary, $dark-primary);
+}
+
+ul.main-menu li a:hover
+{
+  border-color:$dark-contrast;
+  background-image:none;
+  background-color:$light-contrast;
+  color:white;
+  text-shadow: 2px 2px 2px #222222;
+  //@include gradient($light-contrast, $dark-contrast);
+}
+
+ul.submenu {
+  display:inline-block;
+  width:100%;
+  border:solid 1px $medium-gray;
+  border-radius:5px;
+  @include gradient(white, $light-gray);
+}
+
+ul.submenu li{
+  padding-left:10px;
+  padding-right:10px;
+  line-height:25px;
+  padding-top:3px;
+  border-left:solid 1px $medium-gray;
+}
+
+ul.submenu li.first {
+  border-left:none;
+}
+
+div.clear {   clear:both; }
+
+/* bootstrap overrides */
+
+[class*="icon-"] {
+  background-image: url("/assets/images/glyphicons-halflings.png");
+}
+
+.icon-white {
+  background-image: url("/assets/images/glyphicons-halflings-white.png");
+}

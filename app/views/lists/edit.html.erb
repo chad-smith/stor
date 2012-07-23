@@ -1,0 +1,46 @@
+<% fields_with_errors = [] %>
+<h2>Edit List</h2>
+<%= form_for @list do |f| -%>
+  <%= f.error_messages %>
+	<h3>Basic Details</h3>
+  <p>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :show_on_menu %>
+    <%= f.check_box :show_on_menu %>
+  </p>
+
+  <h3>Fields</h3>
+  <br />
+
+  <div class="accordion">
+    <%= f.fields_for :schema_fields do |builder| %>
+      <%= render 'field', :f => builder %>
+    <% end -%>
+  </div>
+  <% first_field_with_error = @list.schema_fields.map{|fld| fld.errors.count}.index{|x| x > 0} %>
+  <script type="text/javascript">
+    $(function() {
+      $('.accordion').after($('.accordion > input').remove());
+
+      $('.accordion').accordion({
+        header: 'h3',
+        autoHeight: false,
+        collapsible:true,
+        active:<%= first_field_with_error || 'false' %>
+      });
+    });
+
+    $('.name-field').change(function() {
+      $(this).closest('div.ui-accordion-content').prev('h3').find('a').text($(this).val());
+    });
+
+  </script>
+
+  <br />
+  <%= link_to_add_field "Add Field", f, :schema_fields %>
+
+  <p><%= f.submit "Update" %></p>
+<% end -%>
