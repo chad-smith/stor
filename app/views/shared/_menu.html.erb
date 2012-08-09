@@ -2,7 +2,7 @@
   <% if !lists.blank? %>
     <% for list in lists %>
       <li>
-        <%= link_to_if params[:listid] == list.slug, list.name, list_path(list.slug), {:class => 'active'} do
+        <%= link_to_if params[:list_id] == list.slug, list.name, list_path(list.slug), {:class => 'active'} do
           link_to list.name, list_path(list.slug)
         end -%>
       </li>

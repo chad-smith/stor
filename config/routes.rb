@@ -1,18 +1,15 @@
 Stor::Application.routes.draw do
 
-  #explicit new matches
-  match 'lists/new' => 'lists#new'
-  match 'lists/:listid/new' => 'items#new', :as => :items
-  match 'lists/:listid' => 'items#create', :via => :post, :as => :items
-  
-  match 'lists/:id' => 'lists#update', :via => :put
+  #explicit list matches
+  match 'lists/:id/edit' => 'lists#edit', :as => :edit_list, :via => :GET
+  match 'lists/new' => 'lists#new', :as => :new_list, :via => :GET
 
-  #item matches
-  match 'lists/:listid/:itemid' => 'items#show', :itemid => /\d+/, :as => :items
-  match 'lists/:listid(/:itemid(/:action))' => 'items', :itemid => /\d+/, :as => :items
+  # explicit list item matches
+  match 'lists/:list_id/new' => 'items#new', :as => :new_list_item, :via => :GET
+  match 'lists/:list_id/:id/edit' => 'items#edit', :as => :edit_list_item, :via => :GET
 
   resources :lists do
-    resources :items
+    resources :items, :path => ''
   end
 
   # The priority is based upon order of creation:

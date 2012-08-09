@@ -1,12 +1,21 @@
 production:
-  host: localhost
-  database: stor
+  sessions:
+    default:
+      database: stor
+      hosts:
+        - localhost:27017
 
 test:
-  host: localhost
-  database: stor_test
-  logger: false
+  sessions:
+    default:
+      database: stor_test
+      hosts:
+        - localhost:27017
+      logger: false
 
 development:
-  host: localhost
-  database: stor_dev
+  sessions:
+    default:
+      database: stor_dev
+      hosts:
+        - localhost:27017

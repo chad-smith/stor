@@ -9,8 +9,8 @@
   <% for item in @list.items -%>
     <tr>
       <td>
-        <%= link_to "View", {:controller => :items, :itemid => item.intid} %>
-        <%= link_to "Edit", {:controller => :items, :action => "edit", :itemid => item.intid}  %>
+        <%= link_to "View", {:controller => :items, :action => 'show', :id => item.intid} %>
+        <%= link_to "Edit", {:controller => :items, :action => "edit", :id => item.intid}  %>
       </td>
       <% for field in @list.schema_fields -%>
       <td>

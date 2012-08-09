@@ -2,11 +2,11 @@ require 'mongoid'
 
 class Item
   include Mongoid::Document
-  include Mongoid::Slug
-  
-  field :intid, :type => Integer
-  slug :intid
+  include Mongoid::MultiParameterAttributes
 
+  field :intid, :type => Integer
+  field :slug
+  
   belongs_to :list
 
   def self.get_schema_enhanced_class(list)
@@ -18,7 +18,8 @@ class Item
       item_class = Class.new(Item)
 
       for field in list.schema_fields
-        item_class.send(:field, "Field#{field.id}".to_sym, type: field.data_type.to_sym)
+
+        item_class.send(:field, "Field#{field.id}".to_sym, type: Object.const_get(field.data_type))
         if (field.required?)
           item_class.send(:validates, "Field#{field.id}".to_sym, :presence => true)
         end
@@ -39,6 +40,10 @@ class Item
 
   def get_field_name(attribute)
     return "#{list.schema_fields[list.schema_fields.index{|field| "Field#{field._id.to_s}" == attribute.to_s}].name}"
+  end
+
+  def to_param
+    slug
   end
 
 end

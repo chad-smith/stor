@@ -9,6 +9,7 @@
 		<td>
 			<%= link_to "View", list %>
 			<%= link_to "Edit", edit_list_url(list) %>
+			<%= link_to "Delete", list, method: 'DELETE', confirm: "Are you sure?" %>
 		</td>
 		<td><%= list.name %></td>
 	</tr>

@@ -1,14 +1,14 @@
-<h1>New Item</h1>
-<%= form_for @item, :url => { :action => "create" } do |f| %>  
-  <% if @item.errors.any? %>  
-    <div id="errorExplanation">  
-      <h2><%= pluralize(@item.errors.count, "error") %> prohibited this record from being saved:</h2>  
-      <ul>  
-        <% @item.errors.each do |attr, msg| %>  
-          <li><%= "#{@item.get_field_name(attr)} #{msg}" %></li>  
-        <% end %>  
-      </ul>  
-    </div>  
+<h2>Edit Item</h2>
+<%= form_for @item, :url => { :action => "update" } do |f| %>
+  <% if @item.errors.any? %>
+    <div id="errorExplanation">
+      <h2><%= pluralize(@item.errors.count, "error") %> prohibited this record from being saved:</h2>
+      <ul>
+        <% @item.errors.each do |attr, msg| %>
+          <li><%= "#{@item.get_field_name(attr)} #{msg}" %></li>
+        <% end %>
+      </ul>
+    </div>
   <% end %>
   
   <% for field in @list.schema_fields -%>
@@ -32,5 +32,5 @@
     <% end -%>
   </p>
   <% end%>
-  <%= f.submit "Create" %>
+  <%= f.submit "Update" %>
 <% end %>

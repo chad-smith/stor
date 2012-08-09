@@ -1,0 +1,15 @@
+development:
+  sessions:
+    # Defines the default session. (required)
+    default:
+      database: stor_development
+      hosts:
+        - localhost:27017
+test:
+  sessions:
+   default:
+      database: stor_test
+      hosts:
+        - localhost:27017
+      options:
+        consistency: :strong

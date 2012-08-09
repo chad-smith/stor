@@ -8,9 +8,8 @@ gem 'rails', '3.2.3'
 gem 'sqlite3'
 gem 'therubyracer'
 gem 'mongoid'
-gem 'bson_ext'
 gem 'dynamic_form'
-gem 'mongoid_slug'
+gem 'stringex'
 
 # Gems used only for assets and not required
 # in production environments by default.
