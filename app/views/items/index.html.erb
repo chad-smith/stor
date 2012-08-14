@@ -11,10 +11,12 @@
       <td>
         <%= link_to "View", {:controller => :items, :action => 'show', :id => item.intid} %>
         <%= link_to "Edit", {:controller => :items, :action => "edit", :id => item.intid}  %>
+        <%= link_to "Delete", {:controller => :items, :action => "destroy", :id => item.intid}, method: 'DELETE', confirm: "Are you sure?" %>
+
       </td>
       <% for field in @list.schema_fields -%>
       <td>
-        <%= item.attributes["Field" + field.id.to_s] %>
+        <%= render 'field_value', field: field, item: item %>
       </td>
       <% end -%>
     </tr>

@@ -7,4 +7,5 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
+//= require angular-1.0.1
 //= require_tree .

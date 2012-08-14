@@ -1,4 +1,5 @@
 require 'mongoid'
+require 'stor_types'
 
 class Item
   include Mongoid::Document
@@ -18,9 +19,10 @@ class Item
       item_class = Class.new(Item)
 
       for field in list.schema_fields
-
-        item_class.send(:field, "Field#{field.id}".to_sym, type: Object.const_get(field.data_type))
-        if (field.required?)
+        type = Object.const_get(field.data_type)
+        
+        item_class.send(:field, "Field#{field.id}".to_sym, type: type)
+        if field.required?
           item_class.send(:validates, "Field#{field.id}".to_sym, :presence => true)
         end
       end

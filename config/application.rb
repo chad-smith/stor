@@ -46,5 +46,7 @@ module Stor
     config.assets.version = '1.0'
 
     config.action_view.field_error_proc = Proc.new{ |html_tag, instance| "<span class=\"fieldWithErrors\">#{html_tag}</span>".html_safe }
+
+    #config.action_view.default_form_builder = "FormHelper::CustomFormBuilder"
   end
 end

@@ -14,22 +14,7 @@
   <% for field in @list.schema_fields -%>
   <p>
     <%= f.label field.name.to_sym, "#{field.name}" %>
-    <% case field.data_type %>
-      <% when 'String' %>
-      <%= f.text_field "Field#{field.id}".to_sym %>
-      <% when 'Boolean' %>
-      <%= f.check_box "Field#{field.id}".to_sym %>
-      <% when 'Integer' %>
-      <%= f.number_field "Field#{field.id}".to_sym %>
-      <% when 'Float' %>
-      <%= f.number_field "Field#{field.id}".to_sym %>
-      <% when 'DateTime' %>
-      <%= f.datetime_select "Field#{field.id}".to_sym %>
-      <% when 'Date' %>
-      <%= f.date_select "Field#{field.id}".to_sym %>
-      <% when 'Time' %>
-      <%= f.time_select "Field#{field.id}".to_sym %>
-    <% end -%>
+    <%= render 'field_edit', f: f, field: field %>
   </p>
   <% end%>
   <%= f.submit "Create" %>

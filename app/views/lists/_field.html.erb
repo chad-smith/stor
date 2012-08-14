@@ -1,32 +1,27 @@
-<h3><a href="#"><%= f.object.name.to_s.empty? ? "New Field" : f.object.name %></h3></a>
-<div>
-<% if f.object.errors.any? %>  
-    <div id="errorExplanation">  
-      <h2><%= pluralize(f.object.errors.count, "error") %> prohibited this record from being saved:</h2>  
-      <ul>  
-        <% f.object.errors.full_messages.each do |msg| %>  
-          <li><%= msg %></li>  
-        <% end %>  
-      </ul>  
-    </div>  
-  <% end %>  
-  <%= f.label :name %>
-  <%= f.text_field :name, :class => "name-field" %>
-  <br />
-  <%= f.label :data_type %>
-  <%= f.select(:data_type, options_for_select([
-    ['Text', 'String'],
-    ['Integer', 'Integer'],
-    ['Float', 'Float'],
-    ['Yes/No', 'Boolean'],
-    ['Date And Time', 'DateTime'],
-    ['Date', 'Date'],
-    ['Time', 'Time']
-  ], f.object.data_type)) %>
-  <br />
-  <%= f.label :required %>
-  <%= f.check_box :required %>
-  <br />
-  <%= f.hidden_field :_destroy %>
-  <%= link_to_remove_field "remove", f %>
+<div class="accordion">
+  <!-- <div ng-repeat="field in fields"> -->
+    <h3><a href="#">New Field</h3></a>
+    <div>
+      <span>Name</span>
+      <%= text_field :name, :class => "name-field" %>
+      <br />
+      <label>Type</label>
+      <select>
+        <option value="String">Text</option>
+        <option value="Integer">Integer</option>
+        <option value="Float">Float</option>
+        <option value="Boolean">Yes/No</option>
+        <option value="DateTime">Date and Time</option>
+        <option value="Date">Date</option>
+        <option value="Time">Time</option>
+        <option value="HasOne">Related To</option>
+        <option value="HasMany">Related To (Many)</option>
+      </select>
+      <br />
+      <span>Required</span>
+      <input type="checkbox" />
+      <br />
+      <a href="#">Remove</a>
+    </div>
+  <!-- </div> -->
 </div>

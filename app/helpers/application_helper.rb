@@ -16,3 +16,5 @@ module ApplicationHelper
     link_to_function(name, "add_field(this, \"#{association}\", \"#{escape_javascript(field)}\")")
   end
 end
+
+ActionView::Base.default_form_builder = FormHelper::CustomFormBuilder
