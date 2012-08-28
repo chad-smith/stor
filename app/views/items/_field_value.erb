@@ -1,0 +1,10 @@
+<% case field.data_type %>
+  <% when 'Date' %>
+    <%= item.attributes["Field" + field.id.to_s].to_date.to_s(:long_ordinal) -%>
+  <% when 'DateTime' %>
+    <%= item.attributes["Field" + field.id.to_s].to_s(:long_ordinal) -%>
+  <% when 'Time' %>
+    <%= item.attributes["Field" + field.id.to_s].to_time.to_s(:time) -%>
+  <% else -%>
+    <%= item.attributes["Field" + field.id.to_s] %>
+<% end -%>

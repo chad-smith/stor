@@ -7,6 +7,12 @@ class ItemsController < ApplicationController
 
   end
 
+  def show
+    @list = List.find_by(slug:params[:list_id])
+    item_class = Item.get_schema_enhanced_class(@list)
+    @item = item_class.find_by(intid: params[:id])
+  end
+
   def new
     @list = List.find_by(slug: params[:list_id])
     item_class = Item.get_schema_enhanced_class(@list)
@@ -51,4 +57,11 @@ class ItemsController < ApplicationController
     end
   end
 
+  def destroy
+    @list = List.find_by(slug: params[:list_id])
+    item_class = Item.get_schema_enhanced_class(@list)
+    @item = item_class.find_by(intid: params[:id])
+    @item.destroy
+    redirect_to list_items_url, :notice => "Item deleted successfully"
+  end
 end

@@ -9,6 +9,7 @@ gem 'sqlite3'
 gem 'therubyracer'
 gem 'mongoid'
 gem 'dynamic_form'
+gem 'thin'
 gem 'stringex'
 
 # Gems used only for assets and not required

@@ -18,6 +18,9 @@ module Stor
     # Custom directories with classes and modules you want to be autoloadable.
     # config.autoload_paths += %W(#{config.root}/extras)
 
+    # autoload lib modules
+    config.autoload_paths += %W(#{config.root}/lib)
+
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named.
     # config.plugins = [ :exception_notification, :ssl_requirement, :all ]
@@ -46,5 +49,6 @@ module Stor
     config.assets.version = '1.0'
 
     config.action_view.field_error_proc = Proc.new{ |html_tag, instance| "<span class=\"fieldWithErrors\">#{html_tag}</span>".html_safe }
+
   end
 end

@@ -1,3 +1,11 @@
 <h1>Showing an individual item (<%= params[:itemid] -%>)</h1>
 
-<%= link_to image_tag("addbtn.png", :border=>0), :action => 'new' -%>
+<%= link_to image_tag("addbtn.png", :border=>0), :action => 'new' -%><% for field in @list.schema_fields -%>
+  <p style="border-bottom:1px dashed #DDDDDD">
+    <strong style="width:200px;display:inline-block"><%= field.name -%></strong>
+  <span>
+        <%= render 'field_value', field: field, item: @item %>
+  </span>
+  </p>
+<% end -%>
+<%= link_to "Return", list_items_path -%>

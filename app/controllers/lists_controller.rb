@@ -37,6 +37,6 @@ class ListsController < ApplicationController
   def destroy
     @list = List.find_by(slug: params[:id])
     @list.destroy
-    redirect_to lists_url, :notice => "Item deleted successfully"
+    redirect_to lists_url, :notice => "List deleted successfully"
   end
 end
