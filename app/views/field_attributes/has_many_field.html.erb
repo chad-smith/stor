@@ -1,0 +1,4 @@
+<%= fields_for @fa do |f| %>
+  <%= f.label :relation %>
+  <%= f.collection_select :relation, List.all.to_a, :id, :name %>
+<% end %>

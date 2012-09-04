@@ -9,8 +9,11 @@ Stor::Application.routes.draw do
   match 'lists/:list_id/:id/edit' => 'items#edit', :as => :edit_list_item, :via => :GET
 
   resources :lists do
+    resources :fields
     resources :items, :path => ''
   end
+
+  resources :field_attributes
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -12,35 +12,27 @@
     <%= f.check_box :show_on_menu %>
   </p>
 
+  <p><%= f.submit "Update" %></p>
+
+
   <h3>Fields</h3>
   <br />
 
-  <div class="accordion">
-    <%= f.fields_for :schema_fields do |builder| %>
-      <%= render 'field', :f => builder %>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+    </tr>
+    <% for item in @list.schema_fields %>
+      <tr>
+        <td><%= item.name %></td> 
+        <td><%= item.data_type %></td> 
+      </tr>
     <% end -%>
-  </div>
+  </table>
   <% first_field_with_error = @list.schema_fields.map{|fld| fld.errors.count}.index{|x| x > 0} %>
-  <script type="text/javascript">
-    $(function() {
-      $('.accordion').after($('.accordion > input').remove());
-
-      $('.accordion').accordion({
-        header: 'h3',
-        autoHeight: false,
-        collapsible:true,
-        active:<%= first_field_with_error || 'false' %>
-      });
-    });
-
-    $('.name-field').change(function() {
-      $(this).closest('div.ui-accordion-content').prev('h3').find('a').text($(this).val());
-    });
-
-  </script>
 
   <br />
-  <%= link_to_add_field "Add Field", f, :schema_fields %>
+  <%= link_to "Add Field", new_list_field_path(@list) %>
 
-  <p><%= f.submit "Update" %></p>
 <% end -%>

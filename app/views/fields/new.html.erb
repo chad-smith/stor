@@ -1,5 +1,5 @@
-<h3><a href="#"><%= f.object.name.to_s.empty? ? "New Field" : f.object.name %></h3></a>
-<div>
+<%= form_for @field, :url => { :action => "create" } do |f| %>
+<h1>New Field</h1>
 <% if f.object.errors.any? %>  
     <div id="errorExplanation">  
       <h2><%= pluralize(f.object.errors.count, "error") %> prohibited this record from being saved:</h2>  
@@ -11,7 +11,7 @@
     </div>  
   <% end %>  
   <%= f.label :name %>
-  <%= f.text_field :name, :class => "name-field" %>
+  <%= f.text_field :name %>
   <br />
   <%= f.label :data_type %>
   <%= f.select(:data_type, options_for_select([
@@ -26,11 +26,25 @@
     ['Related To (Many)', 'HasMany']
   ], f.object.data_type)) %>
   <br />
+  <div id="extra_fields"></div>
   <%= f.label :required %>
   <%= f.check_box :required %>
   <br />
-  <%= f.hidden_field :_destroy %>
-  <%= render 'field_text', :f => f %>
-  <div data-id="extra_fields"></div>
-  <a>remove</a>
-</div>
+  <%= f.submit "Create" %>
+<% end -%>
+
+<script type="text/javascript">
+  $(function() {
+    update_attributes();
+  });
+
+  $('#schema_field_data_type').on('change', function() {
+    update_attributes();
+  });
+
+  function update_attributes()
+  {
+    $('#extra_fields').load('/field_attributes/'+ $('#schema_field_data_type').val());
+  }
+
+</script>
