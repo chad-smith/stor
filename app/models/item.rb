@@ -2,6 +2,10 @@ require 'mongoid'
 include StorTypes
 
 class Item
+  class << self
+    attr_accessor :list
+  end
+
   include Mongoid::Document
   include Mongoid::MultiParameterAttributes
 
@@ -17,6 +21,7 @@ class Item
       item_class = Object.const_get(class_name)
     else
       item_class = Class.new(Item)
+      item_class.list = list
 
       for field in list.schema_fields
         type = Object.const_get(field.data_type)
@@ -26,6 +31,7 @@ class Item
           item_class.send(:validates, "Field#{field.id}".to_sym, :presence => true)
         end
       end
+
       Object.const_set(class_name, item_class)
     end
     

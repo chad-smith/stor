@@ -20,13 +20,17 @@
 
   <table>
     <tr>
+      <th>Actions</th>
       <th>Name</th>
       <th>Type</th>
     </tr>
-    <% for item in @list.schema_fields %>
+    <% for field in @list.schema_fields %>
       <tr>
-        <td><%= item.name %></td> 
-        <td><%= item.data_type %></td> 
+        <td>
+          <%= link_to "Delete", list_field_path(@list, field), method: 'DELETE', confirm: "Are you sure?" %>
+        </td>
+        <td><%= field.name %></td> 
+        <td><%= field.data_type %></td> 
       </tr>
     <% end -%>
   </table>
