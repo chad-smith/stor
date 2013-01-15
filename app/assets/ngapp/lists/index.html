@@ -1,0 +1,19 @@
+<div ng-controller="ListIndexController">
+  <h1>Lists</h1>
+  <table class="table table-bordered">
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>On Menu</th>
+      <th>Slug</th>
+    </tr>
+  </thead>
+  <tbody>
+  <tr ng-repeat="list in listView.lists">
+    <td>{{list.name}}</td>
+    <td>{{list.show_on_menu}}</td>
+    <td>{{list.slug}}</td>
+  </tr>
+</tbody>
+  </table>
+</div>

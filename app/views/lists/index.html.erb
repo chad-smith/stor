@@ -1,20 +1,16 @@
 <h1>Lists</h1>
-<table>
+<table class="table table-bordered">
 	<tr>
 		<th>Actions</th>
 		<th>Name</th>
 	</tr>
-	<% for list in @lists %>
 	<tr>
 		<td>
-			<%= link_to "View", list %>
-			<%= link_to "Edit", edit_list_url(list) %>
-			<%= link_to "Delete", list, method: 'DELETE', confirm: "Are you sure?" %>
+			View, Edit, Delete
 		</td>
-		<td><%= list.name %></td>
+		<td>list.name</td>
 	</tr>
-	<% end %>
 </table>
 <p>
-	<%= link_to image_tag("addbtn.png", :border=>0), :action => 'new' -%>
+	<button class="btn">New</button>
 </p>

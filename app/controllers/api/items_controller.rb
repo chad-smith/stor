@@ -1,4 +1,4 @@
-class ItemsController < ApplicationController
+class Api::ItemsController < ApplicationController
   def index
     @list = List.find_by(slug: params[:list_id])
 

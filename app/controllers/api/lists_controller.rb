@@ -1,6 +1,11 @@
-class ListsController < ApplicationController
+class Api::ListsController < ApplicationController
+  respond_to :json
+
   def index
     @lists = List.all.to_a
+
+    render :json => @lists
+
   end
 
   def new

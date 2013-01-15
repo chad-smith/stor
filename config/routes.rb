@@ -1,19 +1,31 @@
 Stor::Application.routes.draw do
 
-  #explicit list matches
-  match 'lists/:id/edit' => 'lists#edit', :as => :edit_list, :via => :GET
-  match 'lists/new' => 'lists#new', :as => :new_list, :via => :GET
-
-  # explicit list item matches
-  match 'lists/:list_id/new' => 'items#new', :as => :new_list_item, :via => :GET
-  match 'lists/:list_id/:id/edit' => 'items#edit', :as => :edit_list_item, :via => :GET
-
-  resources :lists do
+  root :to => "home#index"
+  
+  namespace :api do
+    resources :lists
+    resources :items
     resources :fields
-    resources :items, :path => ''
   end
 
-  resources :field_attributes
+  match '*path' => "home#index"
+  
+  #get "home/index"
+
+  #explicit list matches
+  #match 'lists/:id/edit' => 'lists#edit', :as => :edit_list, :via => :GET
+  #match 'lists/new' => 'lists#new', :as => :new_list, :via => :GET
+
+  # explicit list item matches
+  #match 'lists/:list_id/new' => 'items#new', :as => :new_list_item, :via => :GET
+  #match 'lists/:list_id/:id/edit' => 'items#edit', :as => :edit_list_item, :via => :GET
+
+  #resources :lists do
+  #  resources :fields
+  #  resources :items, :path => ''
+  #end
+
+  #resources :field_attributes
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

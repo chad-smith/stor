@@ -1,6 +1,6 @@
 require 'blank_fields'
 
-class FieldAttributesController < ApplicationController
+class Api::FieldAttributesController < ApplicationController
   def show
     typename = params[:id] + 'Field'
     type = Object.const_get(typename)

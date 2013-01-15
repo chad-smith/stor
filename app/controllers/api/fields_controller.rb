@@ -1,4 +1,4 @@
-class FieldsController < ApplicationController
+class Api::FieldsController < ApplicationController
   def index
     
   end
