@@ -1,10 +1,13 @@
 class Api::ItemsController < ApplicationController
+  respond_to :json
+
   def index
     @list = List.find_by(slug: params[:list_id])
 
     #ensures the relevant class is available for list items
     item_class = Item.get_schema_enhanced_class(@list)
-
+    
+    render :json => item_class.all.to_a
   end
 
   def show
@@ -20,7 +23,7 @@ class Api::ItemsController < ApplicationController
   end
 
   def create
-    
+
     @list = List.find_by(slug: params[:list_id])
 
     item_class = Item.get_schema_enhanced_class(@list)

@@ -1,3 +1,18 @@
 <div ng-controller="ListDetailsController">
-  <h1>List Details</h1>
+  <h1>
+    {{list.name}}
+    <a class="unstyled" ng-href="{{route.action('edit')}}"><i class="icon-edit"></i></a>
+  </h1>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th ng-repeat="field in list.schema_fields">{{field.name}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="item in listItems">
+        <td ng-repeat="field in list.schema_fields">{{item['Field' + field.id]}}</td>
+      </tr>
+    </tbody>
+  </table>
 </div>

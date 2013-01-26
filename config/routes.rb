@@ -1,14 +1,15 @@
 Stor::Application.routes.draw do
-
-  root :to => "home#index"
   
   namespace :api do
-    resources :lists
-    resources :items
-    resources :fields
+    resources :lists do
+      resources :items
+      resources :fields
+    end
   end
 
-  match '*path' => "home#index"
+  match 'assets/*other' => "application#routing_error"
+  match 'api/*other' => "application#routing_error"
+  match '(*path)' => "home#index"
   
   #get "home/index"
 

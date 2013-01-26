@@ -1,0 +1,57 @@
+<div ng-controller="ListEditController">
+  <h1>{{list.name || "New List"}}</h1>
+  <form ng-submit="saveList()">
+    <h3>Basic Details</h3>
+    <p>
+      <label for="list-name">Name</label>
+      <input id="list-name" ng-model="list.name" required>
+    </p>
+    <p>
+      <label for="list-slug">Slug</label>
+      <input id="list-slug" ng-model="list.slug" required>
+    </p>
+    <p>
+      <label for="list-show-on-menu">Show on Menu</label>
+      <input id="list-show-on-menu" type="checkbox" ng-model="list.show_on_menu">
+    </p>
+
+    <h3>Fields</h3>
+    <table>
+      <tr>
+        <th>Actions</th>
+        <th>Name</th>
+        <th>Type</th>
+      </tr>
+      <tr ng-repeat="field in list.schema_fields">
+        <td>
+          <a href="">Delete</a>
+        </td>
+        <td>{{ field.name }}</td> 
+        <td>{{ field.data_type }}</td> 
+      </tr>
+    </table>
+    <h4>Add new field</h4>
+    <p>
+      <label for="field-name">Name</label>
+      <input id="field-name" ng-model="newField.name">
+    </p>
+    <p>
+      <label for="field-type">Type</label>
+      <select id="field-type" ng-model="newField.data_type">
+          <option value="String">Text</option>
+          <option value="Integer">Integer</option>
+          <option value="Float">Float</option>
+          <option value="Boolean">Yes/No</option>
+          <option value="DateTime">Date and Time</option>
+          <option value="Date">Date</option>
+          <option value="Time">Time</option>
+          <option value="Related To">HasOne</option>
+          <option value="Related To (Many)">HasMany</option>
+      </select>
+    </p>
+    <input type="button" ng-click="addField(newField)" value="Add">
+
+
+    <input type="submit" value="Save List">
+  </form>
+</div>

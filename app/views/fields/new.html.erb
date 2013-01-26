@@ -1,29 +1,29 @@
 <%= form_for @field, :url => { :action => "create" } do |f| %>
 <h1>New Field</h1>
 <% if f.object.errors.any? %>  
-    <div id="errorExplanation">  
-      <h2><%= pluralize(f.object.errors.count, "error") %> prohibited this record from being saved:</h2>  
-      <ul>  
-        <% f.object.errors.full_messages.each do |msg| %>  
-          <li><%= msg %></li>  
-        <% end %>  
-      </ul>  
-    </div>  
-  <% end %>  
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <br />
-  <%= f.label :data_type %>
-  <%= f.select(:data_type, options_for_select([
-    ['Text', 'String'],
-    ['Integer', 'Integer'],
-    ['Float', 'Float'],
-    ['Yes/No', 'Boolean'],
-    ['Date And Time', 'DateTime'],
-    ['Date', 'Date'],
-    ['Time', 'Time'],
-    ['Related To', 'HasOne'],
-    ['Related To (Many)', 'HasMany']
+<div id="errorExplanation">  
+  <h2><%= pluralize(f.object.errors.count, "error") %> prohibited this record from being saved:</h2>  
+  <ul>  
+    <% f.object.errors.full_messages.each do |msg| %>  
+    <li><%= msg %></li>  
+    <% end %>  
+  </ul>  
+</div>  
+<% end %>  
+<%= f.label :name %>
+<%= f.text_field :name %>
+<br />
+<%= f.label :data_type %>
+<%= f.select(:data_type, options_for_select([
+  ['Text', 'String'],
+  ['Integer', 'Integer'],
+  ['Float', 'Float'],
+  ['Yes/No', 'Boolean'],
+  ['Date And Time', 'DateTime'],
+  ['Date', 'Date'],
+  ['Time', 'Time'],
+  ['Related To', 'HasOne'],
+  ['Related To (Many)', 'HasMany']
   ], f.object.data_type)) %>
   <br />
   <div id="extra_fields"></div>
@@ -31,9 +31,9 @@
   <%= f.check_box :required %>
   <br />
   <%= f.submit "Create" %>
-<% end -%>
+  <% end -%>
 
-<script type="text/javascript">
+  <script type="text/javascript">
   $(function() {
     update_attributes();
   });
@@ -47,4 +47,4 @@
     $('#extra_fields').load('/field_attributes/'+ $('#schema_field_data_type').val());
   }
 
-</script>
+  </script>
