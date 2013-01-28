@@ -11,7 +11,7 @@ class Api::ItemsController < ApplicationController
   end
 
   def show
-    @list = List.find_by(slug:params[:list_id])
+    @list = List.find_by(slug: params[:list_id])
     item_class = Item.get_schema_enhanced_class(@list)
     @item = item_class.find_by(intid: params[:id])
   end

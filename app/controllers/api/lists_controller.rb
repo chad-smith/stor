@@ -1,3 +1,5 @@
+require 'blank_fields'
+
 class Api::ListsController < ApplicationController
   respond_to :json
 
@@ -27,17 +29,25 @@ class Api::ListsController < ApplicationController
     #rebuild the relevant dynamic class
     Item.rebuild_schema(@list)
 
-    # check for new fields and save
-=begin
-    params.schema_fields.select { |f| not @list.schema_fields.index { |f2| f.id == f2.id } }
-        fieldClass = Object.const_get(params[:schema_field][:data_type] +"Field")
-        mergedParams = params[:schema_field].merge params[fieldClass.name.underscore]
-        @field = @list.schema_fields.create(mergedParams, fieldClass)
-        @field.save
-    end
-=end
+    all_fields = params[:schema_fields] || []
+      # check for items that exist on server and have been removed by client
+      old_fields = @list.schema_fields.select { |f2| all_fields.index { |f| f[:id] == f2._id.to_s }.nil? }
+      # check for items that exist on client and have been removed by server
+      new_fields = all_fields.select { |f| @list.schema_fields.index { |f2| f[:id] == f2._id.to_s }.nil? }
 
-    
+      # delete removed fields first
+      old_fields.each do |field|
+        field.delete
+      end
+
+
+      new_fields.each do |field|
+        fieldClass = Object.const_get(field[:data_type] +"Field")
+        @field = @list.schema_fields.create(field, fieldClass)
+      end
+
+    @list.save
+
     render :json => @list
   end
 

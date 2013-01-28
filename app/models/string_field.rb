@@ -1,3 +1,3 @@
 class StringField < SchemaField
-  attr_accessor :max_length
+  field :max_length, type: Integer
 end

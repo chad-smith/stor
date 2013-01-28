@@ -1,3 +1,3 @@
 class HasManyField < SchemaField
-  attr_accessor :relation
+  field :relation
 end

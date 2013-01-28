@@ -24,7 +24,7 @@
       </tr>
       <tr ng-repeat="field in list.schema_fields">
         <td>
-          <a href="">Delete</a>
+          <a ng-click="removeField(field)" class="unstyled"><i class="icon-trash"></i></a>
         </td>
         <td>{{ field.name }}</td> 
         <td>{{ field.data_type }}</td> 
@@ -38,16 +38,20 @@
     <p>
       <label for="field-type">Type</label>
       <select id="field-type" ng-model="newField.data_type">
-          <option value="String">Text</option>
-          <option value="Integer">Integer</option>
-          <option value="Float">Float</option>
-          <option value="Boolean">Yes/No</option>
-          <option value="DateTime">Date and Time</option>
-          <option value="Date">Date</option>
-          <option value="Time">Time</option>
-          <option value="Related To">HasOne</option>
-          <option value="Related To (Many)">HasMany</option>
+        <option value="String">Text</option>
+        <option value="Integer">Integer</option>
+        <option value="Float">Float</option>
+        <option value="Boolean">Yes/No</option>
+        <option value="DateTime">Date and Time</option>
+        <option value="Date">Date</option>
+        <option value="Time">Time</option>
+        <option value="Related To">HasOne</option>
+        <option value="Related To (Many)">HasMany</option>
       </select>
+    </p>
+    <p ng-show="newField.data_type == 'String'">
+      <label for="string-max-length">Max Length</label>
+      <input type="number" id="string-max-length" ng-model="newField.max_length">
     </p>
     <input type="button" ng-click="addField(newField)" value="Add">
 
