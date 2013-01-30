@@ -15,7 +15,7 @@
 //= require_tree .
 //= require underscore.min
 //= require bootstrap.min
-//= require angular.min
+//= require angular
 //= require angular-resource
 //= require route
 //= require_tree ../ngapp
